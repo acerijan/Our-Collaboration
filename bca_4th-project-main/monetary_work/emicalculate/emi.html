@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="swift3.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Manrope, sans-serif;
+        }
+
+        body {
+            background-color: #c4c4c4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .emi-calculator {
+            min-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            max-width: 1440px;
+            margin: 0 auto;
+
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-logo span {
+            font-size: 24px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .container {
+            position: relative;
+            top: 100px;
+            /* Adjust this value depending on how much space you want from the header */
+
+        }
+
+        header {
+            width: 100%;
+            background-color: #409cff;
+            box-shadow: #333;
+            padding: 10px 20px;
+            position: relative;
+            box-shadow: 0 4px 8px #0000001a;
+
+
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .result-item span:first-child {
+            color: #666;
+        }
+
+        .result-item span:last-child {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation bar with Swift logo and text -->
+    <header>
+
+        <nav class="navbar">
+            <div class="nav-logo">
+                <img src="../../icons/swift.jpeg" alt="Swift Logo">
+                <span id="top">Swift</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="emi-calculator">
+            <h2><i class="fa fa-calculator"></i> EMI Calculator</h2>
+
+            <div class="input-group">
+                <label for="loan-amount">Loan Amount (NPR)</label>
+                <input type="number" id="loan-amount" placeholder="Enter loan amount">
+                <div class="error" id="loan-amount-error">Please enter a valid loan amount</div>
+            </div>
+
+            <div class="input-group">
+                <label for="interest-rate">Interest Rate (% per year)</label>
+                <input type="number" id="interest-rate" placeholder="Enter interest rate">
+                <div class="error" id="interest-rate-error">Please enter a valid interest rate</div>
+            </div>
+
+            <div class="input-group">
+                <label for="loan-term">Loan Term (years)</label>
+                <input type="number" id="loan-term" placeholder="Enter loan term">
+                <div class="error" id="loan-term-error">Please enter a valid loan term</div>
+            </div>
+
+            <button onclick="calculateEMI()">Calculate EMI</button>
+
+            <div class="result" id="result">
+                <div class="result-item">
+                    <span>Monthly EMI:</span>
+                    <span id="monthly-emi">NPR 0</span>
+                </div>
+                <div class="result-item">
+                    <span>Total Interest:</span>
+                    <span id="total-interest">NPR 0</span>
+                </div>
+                <div class="result-item">
+                    <span>Total Amount:</span>
+                    <span id="total-amount">NPR 0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateEMI() {
+            // Get input values
+            const loanAmount = parseFloat(document.getElementById('loan-amount').value);
+            const interestRate = parseFloat(document.getElementById('interest-rate').value);
+            const loanTerm = parseFloat(document.getElementById('loan-term').value);
+
+            // Validate inputs
+            let isValid = true;
+
+            if (!loanAmount || loanAmount <= 0) {
+                document.getElementById('loan-amount-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('loan-amount-error').style.display = 'none';
+            }
+
+            if (!interestRate || interestRate <= 0) {
+                document.getElementById('interest-rate-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('interest-rate-error').style.display = 'none';
+            }
+
+            if (!loanTerm || loanTerm <= 0) {
+                document.getElementById('loan-term-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('loan-term-error').style.display = 'none';
+            }
+
+            if (!isValid) return;
+
+            // Calculate EMI
+            const monthlyInterest = (interestRate / 12) / 100;
+            const numberOfPayments = loanTerm * 12;
+
+            const emi = loanAmount * monthlyInterest *
+                (Math.pow(1 + monthlyInterest, numberOfPayments)) /
+                (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
+
+            const totalAmount = emi * numberOfPayments;
+            const totalInterest = totalAmount - loanAmount;
+
+            // Display results
+            document.getElementById('monthly-emi').textContent =
+                'NPR ' + emi.toFixed(2);
+            document.getElementById('total-interest').textContent =
+                'NPR ' + totalInterest.toFixed(2);
+            document.getElementById('total-amount').textContent =
+                'NPR ' + totalAmount.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>

@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Form</title>
-    <link rel="stylesheet" href="../../css/styles.css">
+    <title>Apply For Loan</title>
+    <link rel="stylesheet" href="../../css/chill.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/png" href="swift3.png">
-    <script src="../../js/script.js"></script>
     <script>
-        function validate()
-        {  
-            pin=document.pinChange.pin.value;
-            return pinValidate(pin);
+        function validate(){
+            todayDate=new Date();
+            selectedDate=new Date(document.dateForm.date.value);
+            if(selectedDate>todayDate){
+                alert("please select valid date");
+                return false;
+            }
+            return true;
         }
     </script>
 </head>
@@ -30,21 +33,18 @@
         </nav>
     </header>
 
-    <!-- Main container for register form -->
+    <!-- Main container for Apply For Loan form -->
     <div class="container">
-        <div class="background-box" style="height:310px;"></div>
-        <div class="login-box">
-            <div class="logo">
-                <img src="../../icons/swift2.jpeg" alt="Swift Logo">
-            </div>
-            <h2>Change Pin</h2>
-            <p>Enter new pin</p>
-            <form action="pinChange.php" name="pinChange" method="post" onsubmit="return validate()">
+        <div class="fund-transfer-box">
+            <h2>Select Date For History</h2>
+            <form action="statementHistory.php" name="dateForm" method="post" onsubmit="return validate()">
+
                 <div class="input-box">
-                    <i class="fa fa-circle-o"></i>
-                    <input type="text" name="pin" placeholder="Pin" required>
+                    <label for="date">Select Date</label>
+                    <input type="date" id="date" name="date" placeholder="10-07-1990" required>
                 </div>
-                <button type="submit" class="btn">Submit</button>
+
+                <button type="submit" class="btn continue">Proceed</button>
             </form>
         </div>
     </div>
