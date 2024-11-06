@@ -1,8 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: McLaren, sans-serif;
+    
+}
+#top   {
+    font-family: Manrope;
+}
+
+body {
+    background-color: #c4c4c4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    background-color: #409cff;
+    
+    padding: 10px ;
+    position:relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    
+    
+}
+.highlight{
+    color: #409cff;
+
+}
+a{
+    color: #000;
+    text-decoration: none;
+}
+a:hover{
+    color: #fff;
+    transition-duration: 0.3s;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    justify-content: space-between;/*justify ko ulta */ 
+    
+    
+}   
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.nav-logo span {
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+}
+.logo {
+    text-align: center;
+    
+}
+
+.logo img {
+    width: 90px;
+}
+
+
+
+
+.container {
+    position:relative;
+    top: 10px; /* Adjust this value depending on how much space you want from the header */
+    width: 700px;
+    padding: 30px;
+    box-shadow: 0 4px 8px #0000001a;
+    margin-top: 50px;
+    background-color: white;
+    border-radius: 1%;
+    
+}
+.chiller{
+    position: relative;
+    left: -45%;
+    background-color: #f6f6f2 ;
+    padding: 20px;
+    width: 500px;
+    box-shadow: 0 4px 8px #0000001a;
+
+}
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-box i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color:#000  ;
+}
+
+.input-box input,textarea {
+    width: 100%;
+    padding: 10px 0px 10px 30px;
+    border: 1px solid #c4c4c4;
+    background-color: #c4c4c4;
+    font-size: 16px;
+    
+}
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #409CFF;
+    color:black;
+    border: none;
+
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #307ACC;
+}
+
+
+.btn:hover {
+    background-color: #307ACC;
+}
 .section-title-area{ text-align: center;}
 .section-title-area>p{ font-size: 40px;}
 
 .section-title{ font-size: 40px;}
-.section-title::after{content: " "; width: 50px; display: block; height: 10px; margin: 5px auto; background-color: rgb(38, 0, 255); }
+
 
 .form-group{ display: flex; flex-direction: column; width: 100%; gap: 10px;}
 form { width: 40%; display: flex; flex-direction: column; margin: auto; justify-content: center;}
