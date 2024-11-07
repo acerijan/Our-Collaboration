@@ -8,6 +8,9 @@
 #top   {
     font-family: Manrope;
 }
+#chill{
+    color:#28C76F;
+}
 
 body {
     background-color: #c4c4c4;
@@ -34,6 +37,7 @@ header {
     align-items: center;
     max-width: 1440px;
     margin: 0 auto;
+    justify-content: space-between;
     
 }
 
@@ -75,8 +79,19 @@ header {
     padding: 23px;
     background-color: #fff;
     font-family: Manrope, serif;
-    
+    justify-content: space-between;
    
+}
+.login a {
+    color:black;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.login a:hover {
+    background-color: #409cff;
+    color:white;
 }
 
 .logo {
@@ -88,7 +103,14 @@ header {
     width: 60px;
 }
 
-h2 {
+.news-item {
+   text-align: center;
+   position: relative;
+   width: 500px;
+   top: 100px;
+}
+
+h2  {
     text-align: center;
     color:#007BFF;
     font-size: 24px;
@@ -144,7 +166,7 @@ p {
     background-color: #307ACC;
 }
 
-.forgot, .register {
+.forgot, .register,.resend {
     display: block;
     text-align: right;
     color: #000000;
