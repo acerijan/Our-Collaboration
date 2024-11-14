@@ -1,7 +1,8 @@
 <?php
 session_start();
 if(!isset($_SESSION["user_id"])){
-    $_SESSION["result_message"]="please login";
+    $_SESSION["result_heading"]="Error:";
+    $_SESSION["result_message"]="Please login";
     $_SESSION["result_color"]="#FFBC11";
     header("Location:../../messageBox.php");
     exit();
@@ -21,13 +22,14 @@ function viewFD($user_id)
         $row = $result->fetch_assoc();
         return $row;
     } else {
-        return false;
+        return -1;
     }
 }
-
+//get necessary details from database
 $row = viewFD($_SESSION["user_id"]);
-if ($row == false) {
-    $_SESSION["result_message"] = "no fd";
+if ($row == -1) {
+    $_SESSION["result_heading"]= "Status:";
+    $_SESSION["result_message"] = "No Fixed Deposit";
     $_SESSION["result_color"] = "#409Cff";
     header("Location:../../messageBox.php");
 }
@@ -42,6 +44,11 @@ if ($row == false) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Fixed Deposit</title>
     <link rel="stylesheet" href="../../css/chill.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="../../icons/swift3.png">
 </head>
 
 <body>
@@ -49,8 +56,8 @@ if ($row == false) {
     <header>
         <nav class="navbar">
             <div class="nav-logo">
-                <img src="../../icons/swift2.jpeg" alt="Swift Logo">
-                <span>Swift</span>
+                <img src="../../icons/swift.jpeg" alt="Swift Logo">
+                <span id="top">Swift</span>
             </div>
         </nav>
     </header>

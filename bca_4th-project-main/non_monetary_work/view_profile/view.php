@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swift Bank Dashboard</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="../../css/chill.css" >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" type="image/png" href="swift3.png">
+    <link rel="icon" type="image/png" href="../../icons/swift3.png">
     <link rel="stylesheet" href="https://fonts.google.com/share?selection.family=Manrope:wght@200..800a">
     <style>
             .btn {

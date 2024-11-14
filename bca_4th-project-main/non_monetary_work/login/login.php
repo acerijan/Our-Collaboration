@@ -20,8 +20,9 @@ function loginValidation($user_id, $password)
         exit();
 
     } else {
-        $_SESSION["result_message"] = "invalid user id or password";
-        $_SESSION["result_color"] = "red";
+        $_SESSION["result_heading"] = "Error:";
+        $_SESSION["result_message"] = "Invalid user id or password";
+        $_SESSION["result_color"] = "#E74C3C";
         header("Location:../../messageBox.php");
     }
 

@@ -5,7 +5,8 @@ include '../balanceAlter.php';
 include '../transactionTableFunction.php';
 
 if(!isset($_SESSION["user_id"])){
-    $_SESSION["result_message"]="please login";
+    $_SESSION["result_heading"]="Error:";
+    $_SESSION["result_message"]="Please login";
     $_SESSION["result_color"]="#FFBC11";
     header("Location:../../messageBox.php");
     exit();
@@ -24,17 +25,17 @@ function createFD($amount, $interest, $date_of_maturity, $user_id, $acc_no)
 }
 
 
-//input from user
+
 $user_id = $_SESSION["user_id"];
 $amount;
 $date_of_maturity;
 $duration;
-//$amount=10000;
-//$date_of_maturity="2025-1-1";
+//input from user
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["fd-btn"])) {
     $_SESSION["amount"] = $_POST["amount"];
-    $_SESSION["date_of_maturity"] = $_POST["hidden-date"];//storing in session due to twice form submission
+    $_SESSION["date_of_maturity"] = $_POST["hidden-date"];
     $_SESSION["duration"] = $_POST["maturity-date"];
+    //storing in session due to twice form submission
 }
 //end
 $amount = $_SESSION["amount"];
@@ -45,7 +46,7 @@ $acc_no = getAccNo($user_id);
 
 
 include '../pincheck.php';
-if ($pinValid == 1 && isset($_POST["pin"])) {
+if ($pinValid == 1 && isset($_POST["pin"])) {  //if pin is valid from the included document then do the following
     unset($_SESSION["amount"]);
     unset($_SESSION["date_of_maturity"]);
     unset($_SESSION["duration"]);
@@ -53,8 +54,9 @@ if ($pinValid == 1 && isset($_POST["pin"])) {
     try {
         deductFromAccount($user_id, $amount);
     } catch (exception $e) {
-        $_SESSION["result_message"] = "unable to create fd minimum balance of 1000 must be maintained";
-        $_SESSION["result_color"] = "red";
+        $_SESSION["result_heading"]="Error:";
+        $_SESSION["result_message"] = "Unable to create fixed deposit minimum balance of 1000 must be maintained";
+        $_SESSION["result_color"] = "#E74C3C";
         header("Location:../../messageBox.php");
         exit();
     }
@@ -62,12 +64,14 @@ if ($pinValid == 1 && isset($_POST["pin"])) {
     try {
         createFD($amount, $interest, $date_of_maturity, $user_id, $acc_no);
         putInTransaction($amount, null, null, "fixed deposit", $user_id);
-        $_SESSION["result_message"] = "fd created";
-        $_SESSION["result_color"] = "green";
+        $_SESSION["result_heading"]="Success:";
+        $_SESSION["result_message"] ="Fixed Deposit created";
+        $_SESSION["result_color"] = "#28C76F";
     } catch (exception $e) {
         addToAccount($user_id, $amount);
-        $_SESSION["result_message"] = "cannot create more than 1 fd at a time";
-        $_SESSION["result_color"] = "red";
+        $_SESSION["result_heading"]="Error:";
+        $_SESSION["result_message"] = "Cannot create more than 1 fixed deposit at a time";
+        $_SESSION["result_color"] = "#E74C3C";
     } finally {
         header("Location:../../messageBox.php");
     }

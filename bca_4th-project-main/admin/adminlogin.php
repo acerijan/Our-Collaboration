@@ -19,8 +19,9 @@
             header("Location:http://localhost/phpmyadmin/");
         }else{
             //unsuccessful login go to error
-            $_SESSION["result_message"] = "invalid user id or password";
-            $_SESSION["result_color"] = "red";
+            $_SESSION["result_heading"]="Error:";
+            $_SESSION["result_message"] = "Invalid username or password";
+            $_SESSION["result_color"] = "#E74C3C";
             header("Location:../messageBox.php");
         }
         
@@ -32,7 +33,6 @@
         $username=$_POST["username"];
         $password=$_POST["password"];
     }
-   // $username="pranav";
-    //$password="pranav";
     //end logic
     loginValidationAdmin($username,$password);
+?>

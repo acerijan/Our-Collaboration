@@ -12,8 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $registered_email = emailViaUserID($user_id);
 if ($registered_email == -1) {
-    $_SESSION["result_message"] = "there is no user id";
-    $_SESSION["result_color"] = "red";
+    $_SESSION["result_heading"] = "Error:";
+    $_SESSION["result_message"] = "There is no user id";
+    $_SESSION["result_color"] = "#E74C3C";
     header("Location:../../messageBox.php");
     exit();
 }

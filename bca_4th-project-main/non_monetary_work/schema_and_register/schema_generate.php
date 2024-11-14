@@ -74,16 +74,9 @@ create table loan(
     foreign key(user_id) references user(user_id),
     foreign key (acc_no)references account(acc_no)
     );";
-$sql2 = "INSERT into account_holder values('pranav','sthapit','pranavsthapit17@gmail.com',1111,'ktm','2000-1-1',null);
-insert into account values(12345,2000,'2020-1-1',1111,null);";
 
-
-if ($conn->multi_query($sql2)) {
-    echo "done insert creation";
+if ($conn->multi_query($sql)) {
+    echo "done table creation";
 }
 $conn->close();
 ?>
-
-pending operations that will be completed when the structure is redesigned fortesting
-1. account no will be 11 in all tables
-2. the amount/balance will be two decimal places for account and transaction and rest will be whole nums.

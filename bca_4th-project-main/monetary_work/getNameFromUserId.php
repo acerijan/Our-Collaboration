@@ -18,5 +18,5 @@ function getNameFromUserId($user_id){
         return -1;
     }
 }
-// echo getNameFromUserId(9860325051);
+
 ?>

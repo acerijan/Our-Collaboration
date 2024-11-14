@@ -29,8 +29,9 @@ $registered_email = selectingEmailForRegistration($acc_no);
 if ($registered_email != -1) {
     include 'otpform.php';
 } else {
-    $_SESSION["result_message"] = "you dont have account";
-    $_SESSION["result_color"] = "red";
+    $_SESSION["result_heading"] = "Error:";
+    $_SESSION["result_message"] = "You dont have account";
+    $_SESSION["result_color"] = "#E74C3C";
     header("Location:../../messageBox.php");
 }
 ?>

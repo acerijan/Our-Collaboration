@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fund Transfer</title>
     <link rel="stylesheet" href="../../css/chill.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="../../icons/swift3.png">
 </head>
 <body>
     <!-- Navigation bar with Swift logo and text -->
     <header>
         <nav class="navbar">
             <div class="nav-logo">
-                <img src="../../icons/swift2.jpeg" alt="Swift Logo">
-                <span>Swift</span>
+                <img src="../../icons/swift.jpeg" alt="Swift Logo">
+                <span id="top">Swift</span>
             </div>
         </nav>
     </header>
@@ -21,9 +26,10 @@
     include '../getNameFromUserId.php';
     include '../getAccNo.php';
 
-    if(!isset($_SESSION["user_id"])){
-        $_SESSION["result_message"]="please login";
-        $_SESSION["result_color"]="#FFBC11";
+    if (!isset($_SESSION["user_id"])) {
+        $_SESSION["result_heading"] = "Error:";
+        $_SESSION["result_message"] = "Please login";
+        $_SESSION["result_color"] = "#FFBC11";
         header("Location:../../messageBox.php");
         exit();
     }
@@ -34,18 +40,26 @@
     $receiver_id;
     $amount;
     $remarks;
-
+    //get user inputs from form and display
         if($_SERVER["REQUEST_METHOD"]=="POST")
         {
             $receiver_id=$_POST["rec_id"];
             $amount=$_POST["amount"];
             $remarks=$_POST["remarks"];
         }
+        //end
     $receiver_acc_no=getAccNo($receiver_id);
     if($receiver_acc_no==-1)
-    {
-        $_SESSION["result_message"]="no account exist";
-        $_SESSION["result_color"] = "red";
+    {   $_SESSION["result_heading"]="Error:";
+        $_SESSION["result_message"]="No account exist";
+        $_SESSION["result_color"] = "#E74C3C";
+        header("Location:../../messageBox.php");
+        exit();
+    }
+    if($_SESSION["user_id"]==$receiver_id)
+    {   $_SESSION["result_heading"]="Error:";
+        $_SESSION["result_message"]="Cannot transfer funds";
+        $_SESSION["result_color"] = "#E74C3C";
         header("Location:../../messageBox.php");
         exit();
     }

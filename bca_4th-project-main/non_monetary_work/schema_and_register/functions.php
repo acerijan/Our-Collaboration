@@ -2,9 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'F:/xampp/htdocs/sendmail/phpmailer/src/Exception.php';
-require 'F:/xampp/htdocs/sendmail/phpmailer/src/PHPMailer.php';
-require 'F:/xampp/htdocs/sendmail/phpmailer/src/SMTP.php';
+require '/opt/lampp/htdocs/sendmail/phpmailer/src/Exception.php';
+require '/opt/lampp/htdocs/sendmail/phpmailer/src/PHPMailer.php';
+require '/opt/lampp/htdocs/sendmail/phpmailer/src/SMTP.php';
 
 
 function selectingEmailForRegistration($acc_no)
@@ -30,8 +30,7 @@ function selectingEmailForRegistration($acc_no)
             $citizenship_no = $row["citizenship_no"];
         }
     } else {
-        //echo "you dont have account";
-        return -1;//donot execute if no account
+        return -1;//donot execute further if no account
     }
     //selecting the email via citizzenship_no
     $sql2 = $conn->prepare("SELECT registered_email from account_holder where citizenship_no=?");
@@ -59,11 +58,11 @@ function sendOTPphp($registered_email)
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'pranavrijanproject@gmail.com';
-    $mail->Password = 'tqcchbpouqmqeibk';
+    $mail->Username = 'swiftproject2024@gmail.com';
+    $mail->Password = 'gaipopkebzogztgq';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
-    $mail->setFrom('pranavrijanproject@gmail.com');
+    $mail->setFrom('swiftproject2024@gmail.com');
     $mail->addAddress($registered_email);
     $mail->isHTML(true);
     $mail->Subject = "OTP";
@@ -103,7 +102,7 @@ function changePassword($user_id, $password)
     $sql = $conn->prepare("UPDATE user set password=? WHERE user_id=?");
     $sql->bind_param('si', $password, $user_id);
     if ($sql->execute()) {
-        $msg = "password changed successfully";
+        $msg = "Password changed successfully";
     }
     $sql->close();
     $conn->close();
@@ -118,7 +117,7 @@ function changePin($user_id, $pin)
     $sql = $conn->prepare("UPDATE user set pin=? WHERE user_id=?");
     $sql->bind_param('ii', $pin, $user_id);
     if ($sql->execute()) {
-        $msg = "pin changed successfully";
+        $msg = "Pin changed successfully";
     }
     $sql->close();
     $conn->close();

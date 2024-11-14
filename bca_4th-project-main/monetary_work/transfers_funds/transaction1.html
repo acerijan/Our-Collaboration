@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirm Transaction</title>
+    <title>Fund Transfer</title>
     <link rel="stylesheet" href="../../css/chill.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" type="image/png" href="swift3.png">
+    <link rel="icon" type="image/png" href="../../icons/swift3.png">
     <script src="../../js/script.js"></script>
     <script>
-        function validate()
-        {
-            receiverId=document.transfer.rec_id.value;
+        function validate() {
+            receiverId = document.transfer.rec_id.value;
             return userIdValidate(receiverId);
         }
     </script>
 </head>
+
 <body>
     <!-- Navigation bar with Swift logo and text -->
     <header>
@@ -45,13 +46,15 @@
                 </div>
                 <div class="input-box">
                     <label for="remarks">Enter remarks</label>
-                    <input type="text" id="remarks" name="remarks" value="transfer" required >
+                    <input type="text" id="remarks" name="remarks" value="transfer" required>
                 </div>
 
                 <button type="submit" class="btn continue">Continue</button>
-                <button type="button" class="btn cancel" onclick="window.location.href='../../mainPage.php';">Cancel</button>
+                <button type="button" class="btn cancel"
+                    onclick="window.location.href='../../mainPage.php';">Cancel</button>
             </form>
         </div>
     </div>
 </body>
+
 </html>

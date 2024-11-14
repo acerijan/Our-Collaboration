@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transfer History</title>
     <link rel="stylesheet" href="../../css/chillistyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="../../icons/swift3.png">
 </head>
 
 <body>
@@ -13,8 +18,8 @@
     <header>
         <nav class="navbar">
             <div class="nav-logo">
-                <img src="../../icons/swift2.jpeg" alt="Swift Logo">
-                <span>Swift</span>
+                <img src="../../icons/swift.jpeg" alt="Swift Logo">
+                <span id="top">Swift</span>
             </div>
         </nav>
     </header>
@@ -22,15 +27,16 @@
     <?php
     session_start();
     include '../getAccNo.php';
-    
-    if(!isset($_SESSION["user_id"])){
-        $_SESSION["result_message"]="please login";
-        $_SESSION["result_color"]="#FFBC11";
+
+    if (!isset($_SESSION["user_id"])) {
+        $_SESSION["result_message"] = "please login";
+        $_SESSION["result_color"] = "#FFBC11";
         header("Location:../../messageBox.php");
         exit();
     }
-    
+
     $date;
+    //input from user
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $date = $_POST["date"];
     }
@@ -62,7 +68,7 @@
                         echo '
                     <div class="transaction-item">
                         <div class="icon">
-                            <img src="transaction-icon.png" alt="Transaction Icon">
+                            <img src="../../icons/transaction-icon.png" alt="Transaction Icon">
                         </div>
                         <div class="transaction-details">
                             <div class="description">

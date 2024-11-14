@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirm Transaction</title>
     <link rel="stylesheet" href="../../css/chill.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="../../icons/swift3.png">
     <script src="../../js/script.js"></script>
     <script>
         function validate()
@@ -19,8 +24,8 @@
     <header>
         <nav class="navbar">
             <div class="nav-logo">
-                <img src="../../icons/swift2.jpeg" alt="Swift Logo">
-                <span>Swift</span>
+                <img src="../../icons/swift.jpeg" alt="Swift Logo">
+                <span id="top">Swift</span>
             </div>
         </nav>
     </header>
@@ -41,7 +46,7 @@
                 
 
                 <button type="submit" name="pin-btn" class="btn continue">Continue</button>
-                <button type="button" class="btn cancel" onclick="window.location.href='F:/xaamp/htdocs/project_4th/mainPage.php'">Cancel</button>
+                <button type="button" class="btn cancel" onclick="window.location.href='../../mainPage.php'">Cancel</button>
             </form>
         </div>
     </div>
@@ -62,8 +67,9 @@
         $pinValid=1;
     }else{
         //session is started in included file
-        $_SESSION["result_message"]="pin not matched";
-        $_SESSION["result_color"] = "red";
+        $_SESSION["result_heading"]="Error:";
+        $_SESSION["result_message"]="Pin not matched";
+        $_SESSION["result_color"] = "#E74C3C";
         header("Location:../../messageBox.php");
     }
     }
@@ -71,57 +77,3 @@
     ?>
 </body>
 </html>
-
-
-
-
-<!--
-
-<html>
-    <head>
-        <script>
-            function validate(){
-                patt=/^[0-9]{4}$/;
-                a=document.pinform.pin.value;
-                if(!patt.test(a))
-            {
-                alert("pin must be 4 digit number");
-                return false;
-            }
-            }
-        </script>
-    </head>
-    <body>
-        <?php
-            //this document will be included in others so user_id will be present in the other documents
-       /*     $pin="";
-            $pinValid="";
-        ?>
-        <form name="pinform" method="post" action="" onsubmit="return validate()">
-            Enter Pin:<input type="text"  name="pin" required> <br>
-            <input type="submit" value="submit">
-        </form>
-        <?php
-
-    if($_SERVER["REQUEST_METHOD"]=="POST")
-    {
-        $pin=$_POST["pin"];
-        $conn=new mysqli('localhost','root','','swift_bank');
-        $sql=$conn->prepare("SELECT pin from user where user_id=?");
-        $sql->bind_param('i',$user_id);//user id from here is in other document
-        $sql->execute();
-        $result=$sql->get_result();
-        $row=$result->fetch_assoc();
-        $conn->close();
-    if($row['pin']==$pin){ 
-        $pinValid=1;
-    }else{
-        die("pin not matched");
-    }
-    }
-
-    */
-?>
-    </body>
-</html>
--->
