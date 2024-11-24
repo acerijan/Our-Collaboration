@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill pdf</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="icons/swift3.png">
+    <style>
+        th{
+            text-align: center;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- Header with Swift logo and navigation to login -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <img src="icons/swift.jpeg" alt="Swift Logo">
+                <span id="top">Swift</span>
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- Table container-->
+    <div class="container" style="width: fit-content;">
+        <h1 style="text-align: center;">History</h1>
+
+        <!-- Table for transaction history -->
+        <table id="transactionTable" border="1" style="margin: 0 auto; text-align: center; border-collapse: collapse; border-width: 3px;">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Receiver ID</th>
+                    <th>Receiver Account Number</th>
+                    <th>Type</th>
+                    <th>User ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will chill here -->
+                <tr>
+                    <th>1 </th>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+
+
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Export button -->
+        <button class="btn" onclick="exportToPDF()" style="display: block; margin: 20px auto;">Export</button>
+    </div>
+
+</body>
+
+</html>
