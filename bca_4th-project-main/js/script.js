@@ -1,3 +1,11 @@
+function exportToPDF() {
+    var doc = new jsPDF();
+    doc.fromHTML(document.body, 15, 15, {
+      'width': 170,
+    });
+    doc.save('export.pdf');
+  }
+  
 function accountNumberValidate(accNo){
     var accountNumberPattern = /^[0-9]{11}$/;
     if(!accNo.match(accountNumberPattern)){
